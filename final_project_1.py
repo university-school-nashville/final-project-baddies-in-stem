@@ -40,8 +40,8 @@ def Escape(player):
         ev = pygame.event.get()
         for event in ev:
             if event.type == pygame.MOUSEBUTTONDOWN:
-                pos = pygame.mouse.get_pos()
-                if 10 <= pos[0] and pos[0]<=300  and 300 >= pos[1] and pos[1] >= 200:
+               # pos = pygame.mouse.get_pos()
+               # if 10 <= pos[0] and pos[0]<=300  and 300 >= pos[1] and pos[1] >= 200:
                     goto(couch)
                     
         
