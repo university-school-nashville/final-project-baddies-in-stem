@@ -21,7 +21,11 @@ def goto(room):
     display.blit(room,(0,0))
 
 atticBackground = pygame.image.load("final_project_attic.jpeg")
-atticBackground = pygame.transform.scale(atticBackground,(750,500))
+atticBackground = pygame.transform.scale(atticBackground,(750,400))
+
+couch = pygame.image.load("couch.jpeg")
+couch = pygame.transform.scale(couch,(750,400))
+
 
 def Escape(player):
     
@@ -37,6 +41,9 @@ def Escape(player):
         for event in ev:
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
+                if 10 <= pos[0] and pos[0]<=300  and 300 >= pos[1] and pos[1] >= 200:
+                    goto(couch)
+                    
         
     
     pygame.QUIT
