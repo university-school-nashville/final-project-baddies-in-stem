@@ -16,26 +16,29 @@ FPS = 60
 class Player:
     def __init__(self):
         self._location = "attic"
+        self._activity = "none"
         
-def goto(room):
+def goto(room,thing):
     display.blit(room,(0,0))
+    display.blit(thing,(10,300))
 
-atticBackground = pygame.image.load("final_project_attic.jpeg")
+atticBackground = pygame.image.load("attic.jpeg")
 atticBackground = pygame.transform.scale(atticBackground,(750,400))
 
-couch = pygame.image.load("couch.jpeg")
-couch = pygame.transform.scale(couch,(750,400))
+couch = pygame.image.load("couch.jpg")
+couch = pygame.transform.scale(couch,(200,100))
 
 
 def Escape(player):
     
     player = Player()
     
-    goto(atticBackground)
+    goto(atticBackground,couch)
     pygame.display.update()
     
     while player._location == "attic":
-        
+       
+    
         
         ev = pygame.event.get()
         for event in ev:
