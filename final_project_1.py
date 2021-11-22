@@ -18,16 +18,23 @@ class Player:
         self._location = "attic"
         self._activity = "none"
         
+class Thing(pygame.sprite.Sprite):
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = couch
+        self.rect = self.image.get_rect()
+        
+        
 def goto(room):
     display.blit(room,(0,0))
     
     
-def click(self,x,y):
+def click(self,x,y,z):
     ev = pygame.event.get()
     for event in ev:
             if event.type == pygame.MOUSEBUTTONDOWN:
                pos = pygame.mouse.get_pos()
-               if pygame.x.collide_rect(x,pos):
+               if z.rect.collidepoint(pos):
                     goto(x)
                     self._activity = y
     
@@ -40,6 +47,8 @@ atticBackground = pygame.transform.scale(atticBackground,(750,400))
 
 couch = pygame.image.load("couch.png")
 couch = pygame.transform.scale(couch,(200,100))
+couch1 = Thing()
+
 
 
 def Escape(player):
@@ -52,7 +61,7 @@ def Escape(player):
     
     while player._location == "attic":
        
-        click(player,couch,"couch")
+        click(player,couch,"couch",couch1)
     
         
        
