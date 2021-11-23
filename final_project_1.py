@@ -59,7 +59,7 @@ def Escape(player):
     
     player = Player()
     
-    goto(atticBackground)
+    
     
     while player._location == "attic":
        goto(atticBackground)
@@ -68,10 +68,8 @@ def Escape(player):
        if player._activity == "couch":
            while player._activity == "couch":
                goto(couchBground)
-    
-    
-        
-    pygame.display.update()
+               
+       pygame.display.update()       
                     
         
     
