@@ -40,9 +40,7 @@ def click(player,x,y):
                     print("this works")
                     #self._activity = y
     
-                    
-    
-    
+                      
 
 atticBackground = pygame.image.load("attic.jpeg")
 atticBackground = pygame.transform.scale(atticBackground,(750,400))
@@ -50,6 +48,7 @@ atticBackground = pygame.transform.scale(atticBackground,(750,400))
 couch = pygame.image.load("couch.png")
 couch = pygame.transform.scale(couch,(200,100))
 couch = Sprite(couch)
+couch.rect = pygame.Rect.move(couch.rect,200,225)
 
 
 
