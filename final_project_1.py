@@ -41,7 +41,6 @@ def click(player,x,y):
                     print("this works")
                     player._activity = y
     
-                      
 
 atticBackground = pygame.image.load("attic.jpeg")
 atticBackground = pygame.transform.scale(atticBackground,(750,400))
@@ -51,24 +50,28 @@ couch = pygame.image.load("couch.png")
 couch = pygame.transform.scale(couch,(200,100))
 couch = Sprite(couch,200,225)
 
+couchBground = pygame.image.load("couch.png")
+couchBground = pygame.transform.scale(couchBground,(750,400))
+
 
 
 def Escape(player):
     
     player = Player()
     
-    
- 
+    goto(atticBackground)
     
     while player._location == "attic":
        goto(atticBackground)
        display.blit(couch.image,(200,225))
        click(player,couch, "couch")
-       while player._activity == "couch":
-           
+       if player._activity == "couch":
+           while player._activity == "couch":
+               goto(couchBground)
+    
     
         
-          pygame.display.update()
+    pygame.display.update()
                     
         
     
