@@ -20,10 +20,11 @@ class Player:
         self._progress = 0
         
 class Sprite(pygame.sprite.Sprite):
-    def __init__(self,image):
+    def __init__(self,image,x,y):
         pygame.sprite.Sprite.__init__(self)
         self.image = image
         self.rect = self.image.get_rect()
+        self.rect = pygame.Rect.move(self.rect,x,y)
         
         
         
@@ -38,17 +39,17 @@ def click(player,x,y):
                pos = pygame.mouse.get_pos()
                if pygame.Rect.collidepoint(x.rect, pos):
                     print("this works")
-                    #self._activity = y
+                    player._activity = y
     
                       
 
 atticBackground = pygame.image.load("attic.jpeg")
 atticBackground = pygame.transform.scale(atticBackground,(750,400))
 
+
 couch = pygame.image.load("couch.png")
 couch = pygame.transform.scale(couch,(200,100))
-couch = Sprite(couch)
-couch.rect = pygame.Rect.move(couch.rect,200,225)
+couch = Sprite(couch,200,225)
 
 
 
@@ -56,16 +57,18 @@ def Escape(player):
     
     player = Player()
     
-    goto(atticBackground)
-    display.blit(couch.image,(200,225))
-    pygame.display.update()
+    
+ 
     
     while player._location == "attic":
-       
-        click(player,couch, "couch")
+       goto(atticBackground)
+       display.blit(couch.image,(200,225))
+       click(player,couch, "couch")
+       while player._activity == "couch":
+           
     
         
-       
+          pygame.display.update()
                     
         
     
