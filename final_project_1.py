@@ -17,6 +17,7 @@ class Player:
     def __init__(self):
         self._location = "attic"
         self._activity = "none"
+        self._progress = 0
         
 class Sprite(pygame.sprite.Sprite):
     def __init__(self,image):
@@ -35,7 +36,7 @@ def click(player,x,y):
     for event in ev:
             if event.type == pygame.MOUSEBUTTONDOWN:
                pos = pygame.mouse.get_pos()
-               if pygame.Rect.collidepoint(pos,x.rect):
+               if pygame.Rect.collidepoint(x.rect, pos):
                     print("this works")
                     #self._activity = y
     
