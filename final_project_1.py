@@ -46,11 +46,11 @@ atticBackground = pygame.image.load("attic.jpeg")
 atticBackground = pygame.transform.scale(atticBackground,(750,400))
 
 
-couch = pygame.image.load("couch.png")
+couch = pygame.image.load("couch.jpg")
 couch = pygame.transform.scale(couch,(200,100))
 couch = Sprite(couch,200,225)
 
-couchBground = pygame.image.load("couch.png")
+couchBground = pygame.image.load("couch.jpg")
 couchBground = pygame.transform.scale(couchBground,(750,400))
 
 
