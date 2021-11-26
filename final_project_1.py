@@ -40,7 +40,17 @@ def click(player,x,y):
                if pygame.Rect.collidepoint(x.rect, pos):
                     print("this works")
                     player._location = y
-                    
+
+def answer(list1,list2):
+    for i in range[list1]:
+        answer = ""
+        for event in pygame.event.get():
+            if event.key == pygame.K_BACKSPACE:
+                answer = answer[:-1]
+            elif event.key == pygame.K_RETURN and answer == list2[i]:
+                i += 1
+            else:
+                answer += event.unicode
     
 
 atticBackground = pygame.image.load("attic.jpeg")
