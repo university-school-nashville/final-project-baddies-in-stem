@@ -10,6 +10,7 @@ import pygame
 pygame.init()
 display = pygame.display.set_mode((750,500))
 WHITE = (255,255,255)
+BLACK = (0,0,0)
 display.fill(WHITE)
 FPS = 60
 
@@ -42,16 +43,22 @@ def click(player,x,y):
                     player._location = y
 
 def answer(list1,list2):
-    for i in range[list1]:
-        answer = ""
-        for event in pygame.event.get():
-            if event.key == pygame.K_BACKSPACE:
-                answer = answer[:-1]
-            elif event.key == pygame.K_RETURN and answer == list2[i]:
-                i += 1
-            else:
-                answer += event.unicode
+        text = ""
+        for i in range(len(list2)):
+            textSurface1 = pygame.font.Font(None,32).render(list1[i],True,BLACK)
+            display.blit(textSurface1,(160,55))
+            while text != list2[i]:
+                for event in pygame.event.get():
+                    if event == pygame.K_BACKSPACE:
+                        text = text[:-1] 
+                    elif event.type == pygame.KEYDOWN:
+                        text += event.unicode
+                        
+                textSurface2 = pygame.font.Font(None,32).render(text,True,BLACK)
+                display.blit(textSurface2,(200,55))
+
     
+
 
 atticBackground = pygame.image.load("attic.jpeg")
 atticBackground = pygame.transform.scale(atticBackground,(750,400))
@@ -59,11 +66,23 @@ atticBackground = pygame.transform.scale(atticBackground,(750,400))
 
 couch = pygame.image.load("couch.png")
 couch = pygame.transform.scale(couch,(150,75))
-couch = Sprite(couch,200,225)
+couch = Sprite(couch,200,245)
 
 couchBground = pygame.image.load("couch.png")
 couchBground = pygame.transform.scale(couchBground,(750,400))
 
+blank = pygame.Surface((450,300))
+blank.fill(WHITE)
+
+inversionQuestions = [
+    'Traduisez “Will you(informal) escape this room?” utilizer inversion.'
+    'Changer “Est-ce que nous aimons les examens” à inversion.'
+    'Changer “Est-ce que elle est contente?” à inversion.']
+
+inversionAnswers = [
+    'Echapperas-tu cette chambre?'
+    'Aimons-nous les examens?'
+    'Est-t-elle contente?']
 
 
 def Escape(player):
@@ -74,14 +93,15 @@ def Escape(player):
     
     while player._location == "attic":
        goto(atticBackground)
-       display.blit(couch.image,(200,225))
+       display.blit(couch.image,(200,245))
        click(player,couch, "couch")
        
        pygame.display.update() 
        
     while player._location == "couch":
         goto(couchBground)
-               
+        display.blit(blank,(150,50)) 
+        answer(inversionQuestions,inversionAnswers)
         pygame.display.update()       
                     
         
