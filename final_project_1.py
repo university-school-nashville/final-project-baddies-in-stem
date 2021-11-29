@@ -90,10 +90,42 @@ inversionQuestions = [
     'Changer “Est-ce que nous aimons les examens” à inversion.',
     'Changer “Est-ce que elle est contente?” à inversion.']
 
+passeQuestions = [
+    'Traduisez à Français, “We went to a party yesterday.”',
+    'Traduisez à Anglais, “Vous êtes vus les chiens au parc.”']
+imparfaitQuestions = [   
+    'Traduizes “I was a good singer.” utilizer l’inversion',
+    'Traduizes “I was doing my homework when you all arrived.”']
+reflexiveQuestions = [    
+    'Traduizes “I comb my hair and I comb her hair.”',
+    'Traduizes “I miss you.”',
+    'Traduizes “If it pleases you.”']
+negationQuestions = [
+    'Traduizes “We hardly go to the movies.”',
+    'Traduizes “I no longer love you.”',
+    'Traduizes “I only went because you all told me to go.”',
+    'Traduizes “Nobody likes me.”']
+
+
 inversionAnswers = [
     'Echapperas-tu cette chambre?',
     'Aimons-nous les examens?',
     'Est-t-elle contente?']
+passeAnswers = [    
+    'Nous sommes allés à la fête hier.',
+    'You all saw the dogs at the park.']
+imparfaitAnswers = [   
+    'J’était un bon chanteur.',
+    'Je faisais mon devoirs quand vous etes arrivés.']
+reflexiveAnswers = [    
+    'Je me peigne les cheveux et je peigne ses cheveux.',
+    'Tu me manque.',
+    'Si te plait.']
+negationAnswers = [
+    'Nous n’allons guère au cinèma.',
+    'Je ne t’aime plus.',
+    'Je ne suis que allé parce que vous m’avez dit aller.',
+    'Personne ne m’aime.']
 
 
 def Escape(player):
