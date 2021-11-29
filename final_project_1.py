@@ -77,9 +77,9 @@ blank.fill(WHITE)
 inversionQuestions = [
     'Traduisez “Will you(informal) escape this room?” utilizer inversion.',
     'Changer “Est-ce que nous aimons les examens” à inversion.',
-    'Changer “Est-ce que elle est contente?” à inversion.'
+    'Changer “Est-ce que elle est contente?” à inversion.']
 
-passeQuestions = [    
+passeQuestions = [
     'Traduisez à Français, “We went to a party yesterday.”',
     'Traduisez à Anglais, “Vous êtes vus les chiens au parc.”']
 imparfaitQuestions = [   
