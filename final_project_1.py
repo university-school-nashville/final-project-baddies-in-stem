@@ -42,7 +42,7 @@ def click(player,x,y):
                     print("this works")
                     player._location = y
 
-def answer(list1,list2,list3,list4):
+def answer(player,list1,list2,list3,list4,room):
         
         for i in range(len(list2)):
             text = ""
@@ -51,18 +51,20 @@ def answer(list1,list2,list3,list4):
             display.blit(textSurface1,(160,list3[i]))
             pygame.display.update()
             while text != list2[i]:
-                #pygame.key.set_text_input_rect((160,list4[1],450,16))
-                pygame.key.start_text_input()
-                #for event in pygame.event.get():
-                    #if event == pygame.K_DELETE:
-                        #text = text[:-1] 
-                    #elif event.type == pygame.KEYDOWN:
-                        #text += event.unicode
+                for event in pygame.event.get():
+                    if event.type == pygame.KEYDOWN:
                         
-                textSurface2 = pygame.font.Font(None,16).render(text,True,BLACK)
-                display.blit(textSurface2,(160,list4[i]))
-                pygame.display.update()
-            pygame.key.stop_text_input()
+                        if event.key == pygame.K_BACKSPACE or event.key == pygame.K_DELETE:
+                            display.blit(delete,(150,list4[i]))
+                            text = text[:-1]
+                        elif event.type == pygame.KEYDOWN:
+                            text += event.unicode
+                       
+                    textSurface2 = pygame.font.Font(None,16).render(text,True,BLACK)
+                    display.blit(delete,(150,list4[i]))
+                    display.blit(textSurface2,(160,list4[i]))
+                    pygame.display.update()
+        player._location = "attic"
 
     
 
@@ -75,11 +77,18 @@ couch = pygame.image.load("couch.png")
 couch = pygame.transform.scale(couch,(150,75))
 couch = Sprite(couch,200,245)
 
+lock = pygame.image.load("lock.png")
+lock = pygame.transform.scale(lock,(15,20))
+lock = Sprite(lock,500,300)
+
 couchBground = pygame.image.load("couch.png")
 couchBground = pygame.transform.scale(couchBground,(750,400))
 
 blank = pygame.Surface((450,300))
 blank.fill(WHITE)
+
+delete = pygame.Surface((450,20))
+delete.fill(WHITE)
 
 
 Qplacement = [55,115,175,235]
@@ -133,20 +142,30 @@ def Escape(player):
     player = Player()
     
     
-    
-    while player._location == "attic":
-       goto(atticBackground)
-       display.blit(couch.image,(200,245))
-       click(player,couch, "couch")
-       
-       pygame.display.update() 
-       
-    while player._location == "couch":
-        goto(couchBground)
-        display.blit(blank,(150,50)) 
-        answer(inversionQuestions,inversionAnswers,Qplacement,Aplacement)
+    while True:
+        while player._location == "attic":
+           goto(atticBackground)
+           display.blit(couch.image,(200,245))
+           display.blit(lock.image,(500,300))
+           click(player,couch, "couch")
+           click(player,lock,"lock")
+           
+           pygame.display.update() 
+           
+        while player._location == "couch":
+            goto(couchBground)
+            display.blit(blank,(150,50)) 
+            answer(player,inversionQuestions,inversionAnswers,Qplacement,Aplacement,atticBackground)
+            
+            pygame.display.update()   
+            
+        #while player._location == "lock":
+            
         
-        pygame.display.update()       
+    
+       
+       
+       
                     
         
     
