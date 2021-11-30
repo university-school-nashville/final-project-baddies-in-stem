@@ -73,6 +73,15 @@ def answer(player,list1,list2,list3,list4,room):
 atticBackground = pygame.image.load("attic.jpeg")
 atticBackground = pygame.transform.scale(atticBackground,(750,400))
 
+roombackground1 = pygame.image.load("final_project_room2.jpeg")
+roombackground1 = pygame.transform.scale(roombackground1, (750,400))
+
+roombackground2 = pygame.image.load("final_project_room3.jpeg")
+roombackground2 = pygame.transform.scale(roombackground2, (750,400))
+
+roombackground3 = pygame.image.load("room5.png")
+roombackground3 = pygame.transform.scale(roombackground3, (750,400))
+
 
 couch = pygame.image.load("couch.png")
 couch = pygame.transform.scale(couch,(150,75))
@@ -82,8 +91,26 @@ lock = pygame.image.load("lock.png")
 lock = pygame.transform.scale(lock,(15,20))
 lock = Sprite(lock,500,300)
 
+lock2 = pygame.image.load("openkey.png")
+lock2 = pygame.transform.scale(lock2,(15,20))
+lock2 = Sprite(lock2,500,300)
+
 couchBground = pygame.image.load("couch.png")
 couchBground = pygame.transform.scale(couchBground,(750,400))
+
+chair = pygame.image.load("purplechair.png")
+chair = pygame.transform.scale(chair,(15,20))
+chair = Sprite(chair,200,245)
+
+bed = pygame.image.load("final_project_bed2.png")
+bed = pygame.transform.scale(bed,(15,20))
+bed = Sprite(bed,200,245)
+
+lamp = pygame.image.load("lamp.png")
+lamp = pygame.transform.scale(lamp,(15,20))
+lamp = Sprite(lamp,200,245)
+
+
 
 blank = pygame.Surface((450,300))
 blank.fill(WHITE)
