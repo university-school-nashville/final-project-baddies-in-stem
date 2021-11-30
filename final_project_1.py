@@ -65,6 +65,7 @@ def answer(player,list1,list2,list3,list4,room):
                     display.blit(textSurface2,(160,list4[i]))
                     pygame.display.update()
         player._location = "attic"
+        player._progress = 1
 
     
 
@@ -146,9 +147,14 @@ def Escape(player):
         while player._location == "attic":
            goto(atticBackground)
            display.blit(couch.image,(200,245))
-           display.blit(lock.image,(500,300))
+           if player._progress == 0:
+               display.blit(lock.image(500,300))
+               click(player,lock,"lock")
+           if player._progress ==1:
+               display.blit(lock2.image(500,300))
+               click(player,lock2,"lock")
            click(player,couch, "couch")
-           click(player,lock,"lock")
+           
            
            pygame.display.update() 
            
@@ -159,7 +165,12 @@ def Escape(player):
             
             pygame.display.update()   
             
-        #while player._location == "lock":
+        while player._location == "lock":
+            if player._progress == 0:
+                player._location = "attic"
+            if player._progress == 1:
+                player._location = "room"
+                player._progress = 0
             
         
     
