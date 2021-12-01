@@ -16,7 +16,7 @@ FPS = 60
 
 class Player:
     def __init__(self):
-        self._location = "attic"
+        self._location = "room1"
         self._activity = "none"
         self._progress = 0
         
@@ -42,27 +42,30 @@ def click(player,x,y):
                     print("this works")
                     player._location = y
 
-def answer(player,list1,list2,list3,list4,room):
+def answer(player,list1,list2,room):
         
+        Qplacement = [55,115,175,235]
+        Aplacement = [100,160,220,280]
+    
         for i in range(len(list2)):
             text = ""
             
             textSurface1 = pygame.font.Font(None,16).render(list1[i],True,BLACK)
-            display.blit(textSurface1,(160,list3[i]))
+            display.blit(textSurface1,(160,Qplacement[i]))
             pygame.display.update()
             while text != list2[i]:
                 for event in pygame.event.get():
                     if event.type == pygame.KEYDOWN:
                         
                         if event.key == pygame.K_BACKSPACE or event.key == pygame.K_DELETE:
-                            display.blit(delete,(150,list4[i]))
+                            display.blit(delete,(150,Aplacement[i]))
                             text = text[:-1]
                         elif event.type == pygame.KEYDOWN:
                             text += event.unicode
                        
                     textSurface2 = pygame.font.Font(None,16).render(text,True,BLACK)
-                    display.blit(delete,(150,list4[i]))
-                    display.blit(textSurface2,(160,list4[i]))
+                    display.blit(delete,(150,Aplacement[i]))
+                    display.blit(textSurface2,(160,Aplacement[i]))
                     pygame.display.update()
         player._location = "attic"
         player._progress = 1
@@ -82,6 +85,8 @@ roombackground2 = pygame.transform.scale(roombackground2, (750,400))
 roombackground3 = pygame.image.load("room5.png")
 roombackground3 = pygame.transform.scale(roombackground3, (750,400))
 
+couchBground = pygame.image.load("couch.png")
+couchBground = pygame.transform.scale(couchBground,(750,400))
 
 couch = pygame.image.load("couch.png")
 couch = pygame.transform.scale(couch,(150,75))
@@ -95,20 +100,17 @@ lock2 = pygame.image.load("openkey.png")
 lock2 = pygame.transform.scale(lock2,(15,20))
 lock2 = Sprite(lock2,500,300)
 
-couchBground = pygame.image.load("couch.png")
-couchBground = pygame.transform.scale(couchBground,(750,400))
-
 chair = pygame.image.load("purplechair.png")
-chair = pygame.transform.scale(chair,(15,20))
+chair = pygame.transform.scale(chair,(150,75))
 chair = Sprite(chair,200,245)
 
 bed = pygame.image.load("final_project_bed2.png")
-bed = pygame.transform.scale(bed,(15,20))
+bed = pygame.transform.scale(bed,(150,75))
 bed = Sprite(bed,200,245)
 
 lamp = pygame.image.load("lamp.png")
-lamp = pygame.transform.scale(lamp,(15,20))
-lamp = Sprite(lamp,200,245)
+lamp = pygame.transform.scale(lamp,(100,150))
+lamp = Sprite(lamp,600,175)
 
 
 
@@ -119,8 +121,7 @@ delete = pygame.Surface((450,20))
 delete.fill(WHITE)
 
 
-Qplacement = [55,115,175,235]
-Aplacement = [100,160,220,280]
+
 
 inversionQuestions = [
     'Traduisez “Will you(informal) escape this room?” utilizer inversion.',
@@ -175,10 +176,10 @@ def Escape(player):
            goto(atticBackground)
            display.blit(couch.image,(200,245))
            if player._progress == 0:
-               display.blit(lock.image(500,300))
+               display.blit(lock.image,(500,300))
                click(player,lock,"lock")
-           if player._progress ==1:
-               display.blit(lock2.image(500,300))
+           if player._progress == 1:
+               display.blit(lock2.image,(500,300))
                click(player,lock2,"lock")
            click(player,couch, "couch")
            
@@ -188,7 +189,7 @@ def Escape(player):
         while player._location == "couch":
             goto(couchBground)
             display.blit(blank,(150,50)) 
-            answer(player,inversionQuestions,inversionAnswers,Qplacement,Aplacement,atticBackground)
+            answer(player,inversionQuestions,inversionAnswers,atticBackground)
             
             pygame.display.update()   
             
@@ -196,9 +197,19 @@ def Escape(player):
             if player._progress == 0:
                 player._location = "attic"
             if player._progress == 1:
-                player._location = "room"
+                player._location = "room1"
                 player._progress = 0
+                
+        while player._location == "room1":
+            goto(roombackground1)
+            display.blit(lamp.image,(600,175))
+            click(player,lamp,"lamp")
+            pygame.display.update()
             
+        while player._location == "lamp":
+            goto(roombackground1)
+            display.blit(blank,(150,50))
+            answer(player,passeQuestions,passeAnswers,roombackground1)
         
     
        
