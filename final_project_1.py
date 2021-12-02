@@ -122,7 +122,7 @@ roombackground4 = pygame.transform.scale(roombackground4,(750,400))
 couchBground = pygame.image.load("couch.png")
 couchBground = pygame.transform.scale(couchBground,(750,400))
 
-escaped = pygame.image.load("excaped.jpeg")
+escaped = pygame.image.load("escaped.jpeg")
 excaped = pygame.transform.scale(escaped,(750,500))
 
 bar1 = pygame.image.load("progressbar1.png")
