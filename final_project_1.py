@@ -146,7 +146,9 @@ lamp = pygame.image.load("lamp.png")
 lamp = pygame.transform.scale(lamp,(100,150))
 lamp = Sprite(lamp,600,175)
 
-
+lamp2 = pygame.image.load("lamp2.png")
+lamp2 = pygame.transform.scale(lamp2,(100,150))
+lamp2 = Sprite(lamp2,100,225)
 
 blank = pygame.Surface((450,300))
 blank.fill(WHITE)
@@ -268,7 +270,9 @@ def Escape(player):
         while player._location == "room2":
             goto(roombackground3)
             display.blit(chair.image,(400,225))
+            display.blit(lamp2.image,(100,225))
             click(player,chair,"chair")
+            click(player,lamp2,"lamp2")
             if player._progress == 0:
                display.blit(lock11.image,(50,100))
                click(player,lock11,"lock3")
@@ -288,9 +292,28 @@ def Escape(player):
              goto(roombackground3)
              display.blit(blank,(150,50))
              answer(player,imparfaitQuestions,imparfaitAnswers,"room2")
-        
+             
+        while player._location == "lamp2":
+             goto(roombackground3)
+             display.blit(blank,(150,50))
+             answer(player,reflexiveQuestions,reflexiveAnswers,"room2")
         
              pygame.display.update()
+        
+        while player._location == "lock3":
+             if player._progress == 0 or player._progress == 1:
+                player._location = "room2"
+             if player._progress == 2:
+                player._location = "room3"
+                player._progress = 0
+                
+        while player._location == "room3":
+            goto(roombackground2)
+            
+            pygame.display.update()
+        
+        
+             
              
         
        
