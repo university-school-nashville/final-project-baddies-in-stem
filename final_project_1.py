@@ -16,7 +16,7 @@ FPS = 60
 
 class Player:
     def __init__(self):
-        self._location = "room1"
+        self._location = "room2"
         self._activity = "none"
         self._progress = 0
         
@@ -130,16 +130,16 @@ couch = Sprite(couch,200,245)
 lock = pygame.image.load("lock.png")
 lock = pygame.transform.scale(lock,(15,20))
 lock10 = Sprite(lock,500,300)
-lock11 = Sprite(lock,50,100)
+lock11 = Sprite(lock,100,100)
 
 lock2 = pygame.image.load("openkey.png")
 lock2 = pygame.transform.scale(lock2,(15,20))
 lock20 = Sprite(lock2,500,300)
-lock21 = Sprite(lock2,50,100)
+lock21 = Sprite(lock2,100,100)
 
 chair = pygame.image.load("purplechair.png")
-chair = pygame.transform.scale(chair,(150,75))
-chair = Sprite(chair,200,245)
+chair = pygame.transform.scale(chair,(150,175))
+chair = Sprite(chair,400,225)
 
 
 lamp = pygame.image.load("lamp.png")
@@ -168,7 +168,7 @@ passeQuestions = [
     'Traduisez à Français, “We went to the party yesterday.”',
     'Traduisez à Francais, “You all saw the dogs at the park”']
 imparfaitQuestions = [   
-    'Traduizes “I was a good singer.” utilizer l’inversion',
+    'Traduizes “I was a good singer.” (masculin)',
     'Traduizes “I was doing my homework when you all arrived.”']
 reflexiveQuestions = [    
     'Traduizes “I comb my hair and I comb her hair.”',
@@ -189,8 +189,9 @@ passeAnswers = [
     'Nous sommes allés à la fête hier',
     'Vous avez vu les chiens au parc']
 imparfaitAnswers = [   
-    'J’étais un bon chanteur',
-    'Je faisais mon devoirs quand vous etes arrivés']
+   
+    "J'étais un bon chanteur",
+    "Je faisais mes devoirs quand vous êtes arrivés"]
 reflexiveAnswers = [    
     'Je me peigne les cheveux et je peigne ses cheveux',
     'Tu me manque',
@@ -243,11 +244,11 @@ def Escape(player):
             display.blit(lamp.image,(600,175))
             click(player,lamp,"lamp")
             if player._progress == 0:
-               display.blit(lock11.image,(50,100))
+               display.blit(lock11.image,(100,100))
                click(player,lock11,"lock2")
                display.blit(bar1,(70,410))
             if player._progress == 1:
-               display.blit(lock21.image,(50,100))
+               display.blit(lock21.image,(100,100))
                click(player,lock21,"lock2")
                display.blit(bar3,(70,410))
             pygame.display.update()
@@ -266,8 +267,32 @@ def Escape(player):
                 
         while player._location == "room2":
             goto(roombackground3)
-        
+            display.blit(chair.image,(400,225))
+            click(player,chair,"chair")
+            if player._progress == 0:
+               display.blit(lock11.image,(50,100))
+               click(player,lock11,"lock3")
+               display.blit(bar1,(70,410))
+            if player._progress == 1:
+                display.blit(bar2,(70,410))
+                display.blit(lock11.image,(50,100))
+                click(player,lock11,"lock3")
+            if player._progress == 2:
+               display.blit(lock21.image,(50,100))
+               click(player,lock21,"lock3")
+               display.blit(bar3,(70,410))
+               
             pygame.display.update()
+               
+        while player._location == "chair":
+             goto(roombackground3)
+             display.blit(blank,(150,50))
+             answer(player,imparfaitQuestions,imparfaitAnswers,"room2")
+        
+        
+             pygame.display.update()
+             
+        
        
        
        
