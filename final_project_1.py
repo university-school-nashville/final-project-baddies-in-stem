@@ -182,7 +182,7 @@ delete.fill(WHITE)
 inversionQuestions = [
     'Traduisez “Will you(informal) escape this room?” utilizer inversion.',
     'Changer “Est-ce que nous aimons les examens” à inversion.',
-    'Changer “Est-ce que elle est contente?” à inversion.']
+    'Changer “Est-ce que tu es contente?” à inversion.']
 
 passeQuestions = [
     'Traduisez à Français, “We went to the party yesterday.”',
@@ -197,14 +197,14 @@ reflexiveQuestions = [
 negationQuestions = [
     'Traduizes “We hardly go to the movies.”',
     'Traduizes “I no longer love you.”',
-    'Traduizes “I only went because you all told me to go.”',
+    'Traduizes “I only have the blue one”',
     'Traduizes “Nobody likes me.”']
 
 
 inversionAnswers = [
     'Echapperas-tu cette chambre?',
     'Aimons-nous les examens?',
-    'Est-t-elle contente?']
+    'Es-tu contente?']
 passeAnswers = [    
     'Nous sommes allés à la fête hier',
     "Vous avez vu les chiens au parc"]
@@ -219,7 +219,7 @@ reflexiveAnswers = [
 negationAnswers = [
     'Nous n’allons guère au cinèma',
     'Je ne t’aime plus',
-    'Je ne suis que allé parce que vous m’avez dit aller',
+    "Je n'ai que le bleu",
     'Personne ne m’aime']
 
 
