@@ -14,12 +14,11 @@ BLACK = (0,0,0)
 display.fill(WHITE)
 FPS = 60
 
-class Player:
+class Player: #class to give player attribute
     def __init__(self):
-        self._location = "attic"
-        self._progress = 0
+        self._location = "room3" #determines what room player is in
         
-class Sprite(pygame.sprite.Sprite):
+class Sprite(pygame.sprite.Sprite): #class to create Sprites
     def __init__(self,image,x,y):
         pygame.sprite.Sprite.__init__(self)
         self.image = image
@@ -32,7 +31,7 @@ def goto(room):
     display.blit(room,(0,0))
     
     
-def click(player,x,y):
+def click(player,x,y): #if mouse clicks a sprite (x) sends player location to y
         ev = pygame.event.get()
         for event in ev:
                 if event.type == pygame.MOUSEBUTTONDOWN:
@@ -44,7 +43,7 @@ def click(player,x,y):
 
     
 
-def answer(player,list1,list2,room):
+def answer(player,list1,list2,room): #allows player to type answers and moves on when they're correct
         
         Qplacement = [55,115,175,235]
         Aplacement = [100,160,220,280]
@@ -98,7 +97,7 @@ def answer(player,list1,list2,room):
                     display.blit(textSurface2,(160,Aplacement[i]))
                     pygame.display.update()
         player._location = room
-        player._progress += 1
+        
        
 
     
@@ -123,7 +122,7 @@ couchBground = pygame.image.load("couch.png")
 couchBground = pygame.transform.scale(couchBground,(750,400))
 
 escaped = pygame.image.load("escaped.jpeg")
-excaped = pygame.transform.scale(escaped,(750,500))
+escaped = pygame.transform.scale(escaped,(750,500))
 
 bar1 = pygame.image.load("progressbar1.png")
 bar1 = pygame.transform.scale(bar1,(300,50))
@@ -217,31 +216,22 @@ reflexiveAnswers = [
     'Tu me manque',
     "S'il te plait"]
 negationAnswers = [
-    'Nous n’allons guère au cinèma',
-    'Je ne t’aime plus',
+    "Nous n’allons guère au cinèma",
+    "Je ne t’aime plus",
     "Je n'ai que le bleu",
-    'Personne ne m’aime']
+    "Personne ne m’aime"]
 
 
-def Escape(player):
+def Escape(player): #main function
     
     player = Player()
     
-    
-    while True:
+    a = True
+    while a == True:
         while player._location == "attic":
            goto(atticBackground)
            display.blit(couch.image,(200,245))
-           """
-           if player._progress == 0:
-               display.blit(lock10.image,(500,300))
-               click(player,lock10,"lock")
-               display.blit(bar1,(70,410))
-           if player._progress == 1:
-               display.blit(lock20.image,(500,300))
-               click(player,lock20,"lock")
-               display.blit(bar3,(70,410))
-               """
+           
            click(player,couch, "couch")
            
            
@@ -253,28 +243,12 @@ def Escape(player):
             answer(player,inversionQuestions,inversionAnswers,'room1')
             
             pygame.display.update()   
-            """
-        while player._location == "lock":
-            if player._progress == 0:
-                player._location = "attic"
-            if player._progress == 1:
-                player._location = "room1"
-                player._progress = 0
-                """
+       
         while player._location == "room1":
             goto(roombackground1)
             display.blit(lamp.image,(600,175))
             click(player,lamp,"lamp")
-            """
-            if player._progress == 0:
-               display.blit(lock11.image,(100,100))
-               click(player,lock11,"lock2")
-               display.blit(bar1,(70,410))
-            if player._progress == 1:
-               display.blit(lock21.image,(100,100))
-               click(player,lock21,"lock2")
-               display.blit(bar3,(70,410))
-               """
+           
             pygame.display.update()
             
         while player._location == "lamp":
@@ -282,56 +256,20 @@ def Escape(player):
             display.blit(blank,(150,50))
             answer(player,passeQuestions,passeAnswers,"room2")
             pygame.display.update()
-            """
-        while player._location == "lock2":
-            if player._progress == 0:
-                player._location = "room1"
-            if player._progress == 1:
-                player._location = "room2"
-                player._progress = 0
-                """
+        
         while player._location == "room2":
             goto(roombackground3)
             display.blit(chair.image,(400,225))
-            #display.blit(lamp2.image,(100,225))
-            #click(player,lamp2,"lamp2")
             click(player,chair,"chair")
             pygame.display.update()
-            """
-            if player._progress == 0:
-               display.blit(lock11.image,(50,100))
-               click(player,lock11,"lock3")
-               display.blit(bar1,(70,410))
-            if player._progress == 1:
-                display.blit(bar2,(70,410))
-                display.blit(lock11.image,(50,100))
-                click(player,lock11,"lock3")
-            if player._progress == 2:
-               display.blit(lock21.image,(50,100))
-               click(player,lock21,"lock3")
-               display.blit(bar3,(70,410))
-               """
+        
             
                
         while player._location == "chair":
              goto(roombackground3)
              display.blit(blank,(150,50))
              answer(player,imparfaitQuestions,imparfaitAnswers,"room3")
-             """
-        while player._location == "lamp2":
-             goto(roombackground3)
-             display.blit(blank,(150,50))
-             answer(player,reflexiveQuestions,reflexiveAnswers,"room2")
-        
-             pygame.display.update()
-        
-        while player._location == "lock3":
-             if player._progress == 0 or player._progress == 1:
-                player._location = "room2"
-             if player._progress == 2:
-                player._location = "room3"
-                player._progress = 0
-                """
+         
         while player._location == "room3":
             goto(roombackground2)
             display.blit(couch2.image,(10,245))
@@ -363,10 +301,12 @@ def Escape(player):
             
         while player._location == "finished":
             goto(escaped)
-            for ev in pygame.event.get():
+            ev = pygame.event.get()
+            for event in ev:
                 if ev.type == pygame.MOUSEBUTTONDOWN:
-                    False
-            pygame.display.update
+                    a = False
+            
+            pygame.display.update()
         
         
              
