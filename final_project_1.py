@@ -16,7 +16,7 @@ FPS = 60
 
 class Player: #class to give player attribute
     def __init__(self):
-        self._location = "room3" #determines what room player is in
+        self._location = "room2" #determines what room player is in
         
 class Sprite(pygame.sprite.Sprite): #class to create Sprites
     def __init__(self,image,x,y):
@@ -216,7 +216,7 @@ reflexiveAnswers = [
     'Tu me manque',
     "S'il te plait"]
 negationAnswers = [
-    "Nous n’allons guère au cinèma",
+    "Nous" #n’allons guère au cinèma",
     "Je ne t’aime plus",
     "Je n'ai que le bleu",
     "Personne ne m’aime"]
@@ -268,23 +268,9 @@ def Escape(player): #main function
         while player._location == "chair":
              goto(roombackground3)
              display.blit(blank,(150,50))
-             answer(player,imparfaitQuestions,imparfaitAnswers,"room3")
-         
-        while player._location == "room3":
-            goto(roombackground2)
-            display.blit(couch2.image,(10,245))
-            click(player,couch2,"couch2")
-            
-            
-            pygame.display.update()
-            
-        while player._location == "couch2":
-            goto(roombackground2)
-            display.blit(blank,(150,50))
-            answer(player,negationQuestions,negationAnswers,"room4")
-            
-            pygame.display.update()
-            
+             answer(player,imparfaitQuestions,imparfaitAnswers,"room4")
+      
+             pygame.display.update()
         while player._location == "room4":
             goto(roombackground4)
             display.blit(chair2.image,(400,225))
@@ -297,7 +283,7 @@ def Escape(player): #main function
             display.blit(blank,(150,50))
             answer(player,reflexiveQuestions,reflexiveAnswers,"finished")
             
-            pygame.display.update
+            pygame.display.update()
             
         while player._location == "finished":
             goto(escaped)
