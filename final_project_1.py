@@ -307,17 +307,7 @@ def Escape(player): #main function
                     a = False
             
             pygame.display.update()
-        
-        
-             
-             
-        
        
-       
-       
-                    
-        
-    
     pygame.QUIT
   
 x = "player"
