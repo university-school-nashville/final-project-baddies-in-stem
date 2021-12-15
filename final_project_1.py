@@ -16,7 +16,7 @@ FPS = 60
 
 class Player: #class to give player attribute
     def __init__(self):
-        self._location = "room2" #determines what room player is in
+        self._location = "attic" #determines what room player is in
         
 class Sprite(pygame.sprite.Sprite): #class to create Sprites
     def __init__(self,image,x,y):
